@@ -178,7 +178,7 @@ void facialmesh::load_mesh(string filename)
 
                         unit simetrical_unit;
                         line = line.substr(2); //Le quito los dos primeros elementos al nombre (# )
-                        simetrical_unit.name = _strdup(line.c_str());
+                        simetrical_unit.name = strdup(line.c_str());
                         std::getline(file, line);
                         int cant_de_renglones = atoi(line.c_str());
                         simetrical_unit.matriz.reserve(cant_de_renglones);
@@ -213,9 +213,9 @@ void facialmesh::load_mesh(string filename)
                         int cant_de_renglones = atoi(line.c_str());
                         unit izquierda, derecha;
                         string aux = auv_name + " R";
-                        izquierda.name = _strdup(aux.c_str());
+                        izquierda.name = strdup(aux.c_str());
                         aux = auv_name + " L";
-                        derecha.name = _strdup(aux.c_str());
+                        derecha.name = strdup(aux.c_str());
                         aux.clear();
 
                         izquierda.matriz.reserve(cant_de_renglones);
@@ -293,7 +293,7 @@ void facialmesh::load_mesh(string filename)
                 if (string::npos != line.find("# ")) {
                     unit shape;
                     line = line.substr(2);
-                    shape.name = _strdup(line.c_str());
+                    shape.name = strdup(line.c_str());
                     std::getline(file, line);
                     int cant_de_renglones = atoi(line.c_str());
 
