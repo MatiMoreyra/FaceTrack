@@ -12,7 +12,8 @@
 
 OnlyMesh::OnlyMesh(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::OnlyMesh)
+    ui(new Ui::OnlyMesh),
+    candide(nullptr)
 {
     ui->setupUi(this);
     std::cout << "Inicializando OnlyMesh...." << std::endl;

@@ -12,7 +12,8 @@
 
 ModelFitting::ModelFitting(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::ModelFitting)
+    ui(new Ui::ModelFitting),
+    candide(nullptr)
 {
     ui->setupUi(this);
     std::cout << "Inicializando ModelFitting...." << std::endl;
