@@ -1,12 +1,13 @@
+#include <QCoreApplication>
+
 #include "facetracking.h"
 
 facetracking::facetracking(){
-    HC_face.load("haarcascade_frontalface_alt2.xml");
+    HC_face.load((QCoreApplication::applicationDirPath() + "/data/haarcascade_frontalface_alt2.xml").toStdString());
     facemark = cv::face::FacemarkLBF::create();
-    facemark->loadModel("lbfmodel.yaml");
+    facemark->loadModel((QCoreApplication::applicationDirPath() + "/data/lbfmodel.yaml").toStdString());
     termcrit = cv::TermCriteria(cv::TermCriteria::COUNT | cv::TermCriteria::EPS, 20, 0.03);
     winSize = cv::Size(20, 20);
-
 }
 
 cv::Rect facetracking::detectFace(cv::Mat img, bool& face_detected) {

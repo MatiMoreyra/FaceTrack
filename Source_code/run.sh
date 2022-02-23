@@ -1,2 +1,2 @@
 #!/bin/bash
-./_out/build/bin/FaceTrack
+./_out/build/FaceTrack

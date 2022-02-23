@@ -5,9 +5,6 @@ project(FaceTrack)
 # TODO: fix warnings and remove -fpermissive.
 set(CMAKE_CXX_FLAGS "-fpermissive -g")
 
-# Output binaries to a bin directory
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Qt5
@@ -81,3 +78,6 @@ target_sources(
         PointState.cpp
         resources/resources.qrc
 )
+
+# Add post build to symlink the data diectory.
+add_custom_command(TARGET FaceTrack POST_BUILD  COMMAND ${CMAKE_COMMAND} -E create_symlink ${CMAKE_CURRENT_SOURCE_DIR}/data ${CMAKE_CURRENT_BINARY_DIR}/data)

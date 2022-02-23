@@ -14,7 +14,4 @@
     <qresource>
         <file>docs/instrucciones.pdf</file>
     </qresource>
-    <qresource>
-        <file>candide/candide3_v3.wfm</file>
-    </qresource>
 </RCC>

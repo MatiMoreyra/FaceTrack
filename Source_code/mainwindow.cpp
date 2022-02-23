@@ -77,7 +77,7 @@ void MainWindow::on_boton_empezar_clicked(){
 }
 
 void MainWindow::move2modelfitting(){
-    candide = new facialmesh(CANDIDE_MODEL);
+    candide = new facialmesh((QCoreApplication::applicationDirPath() + "/" + CANDIDE_MODEL).toStdString());
     m_fitting.candide = candide;
     m_fitting.init();
     ui->stackedWidget->setCurrentIndex(2);
