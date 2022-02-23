@@ -1,6 +1,6 @@
 #include "onlymesh.h"
 #include "ui_onlymesh.h"
-#include "MatToQImage.h"
+#include "utils/MatToQImage.h"
 #include <iostream>
 #include <fstream>
 #include <QFile>

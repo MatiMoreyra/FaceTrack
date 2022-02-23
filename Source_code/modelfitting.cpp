@@ -1,6 +1,6 @@
 #include "modelfitting.h"
 #include "ui_modelfitting.h"
-#include "MatToQImage.h"
+#include "utils/MatToQImage.h"
 #include <iostream>
 #include <fstream>
 #include <QFile>

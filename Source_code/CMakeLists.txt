@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.1.0)
+cmake_minimum_required(VERSION 3.16.3)
 
 project(FaceTrack)
 
@@ -6,6 +6,7 @@ project(FaceTrack)
 set(CMAKE_CXX_FLAGS "-fpermissive -g")
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # Qt5
 find_package(
@@ -28,7 +29,6 @@ include_directories(
     ${OpenCV_INCLUDE_DIRS}
     ${ALGLIB_INCLUDE_DIRS}
     ${Qt5Core_INCLUDE_DIRS}
-    ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
 add_executable(FaceTrack
@@ -64,7 +64,6 @@ set_target_properties(
 target_sources(
     FaceTrack
     PRIVATE
-        MatToQImage.cpp
         facialmesh.cpp
         facetracking.cpp
         logfile.cpp
@@ -76,8 +75,10 @@ target_sources(
         results.cpp
         trackingvideo.cpp
         PointState.cpp
-        resources/resources.qrc
 )
 
 # Add post build to symlink the data diectory.
 add_custom_command(TARGET FaceTrack POST_BUILD  COMMAND ${CMAKE_COMMAND} -E create_symlink ${CMAKE_CURRENT_SOURCE_DIR}/data ${CMAKE_CURRENT_BINARY_DIR}/data)
+
+add_subdirectory(resources)
+add_subdirectory(utils)

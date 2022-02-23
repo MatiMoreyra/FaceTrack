@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 #include <QFileDialog>
-#include "MatToQImage.h"
+#include "utils/MatToQImage.h"
 #include <QGraphicsDropShadowEffect>
 
 KeyFrameSelection::KeyFrameSelection(QWidget *parent) :
