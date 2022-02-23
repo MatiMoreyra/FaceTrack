@@ -89,3 +89,6 @@ _deps
 
 # Directories starting with _
 _*/
+
+# Visual Studio Code configuration files.
+.vscode/*

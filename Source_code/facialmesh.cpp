@@ -1,4 +1,4 @@
-﻿#include "facialmesh.h"
+#include "facialmesh.h"
 #define PI                  3.1415926
 
 facialmesh::facialmesh(string filename) {
@@ -390,7 +390,9 @@ float facialmesh::str2float(string s)
     if (found != std::string::npos)
         s[found] = '.'; // Change ',' to '.'
 
-    return std::atof(s.c_str());
+    float result = std::atof(s.c_str());
+    std::cout << "Converted " << s << " to " << result << std::endl;
+    return result;
 }
 
 void facialmesh::leer_parametros(vector<vector<float> >* param, ifstream& file)
