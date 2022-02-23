@@ -77,8 +77,7 @@ target_sources(
         PointState.cpp
 )
 
-# Add post build to symlink the data diectory.
-add_custom_command(TARGET FaceTrack POST_BUILD  COMMAND ${CMAKE_COMMAND} -E create_symlink ${CMAKE_CURRENT_SOURCE_DIR}/data ${CMAKE_CURRENT_BINARY_DIR}/data)
+file(COPY data DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 add_subdirectory(resources)
 add_subdirectory(utils)
