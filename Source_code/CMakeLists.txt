@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.1.0)
 
-project(HelloTests)
+project(FaceTrack)
 
 # TODO: fix warnings and remove -fpermissive.
 set(CMAKE_CXX_FLAGS "-fpermissive -g")
