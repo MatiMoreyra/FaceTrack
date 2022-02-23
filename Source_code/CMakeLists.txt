@@ -77,5 +77,5 @@ target_sources(
         results.cpp
         trackingvideo.cpp
         PointState.cpp
-        resources.qrc
+        resources/resources.qrc
 )
