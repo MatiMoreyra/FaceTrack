@@ -3,6 +3,7 @@
 #include "utils/MatToQImage.h"
 #include <iostream>
 #include <fstream>
+#include <QMessageBox>
 #include <QFile>
 #include <QFileInfo>
 #include <QFileDialog>
@@ -372,11 +373,13 @@ void ModelFitting::on_btn_automatic_fit_clicked()
     std::cout << "Ajustando máscara" << std::endl;
     // Exportar frame actual.
     cv::Mat keyframe = candide->initial_keyframe;
-    cv::imwrite("./candide-fit/temp-keyframe.png", GetFittedImage(keyframe, 713, 1270));
+
+    QString keyframe_path = "./candide-fit/temp-keyframe.png";
+    cv::imwrite(keyframe_path.toStdString(), GetFittedImage(keyframe, 713, 1270));
 
     QString candide_fit_path = "python3";
     QStringList arguments;
-    arguments << "./candide-fit/src/fit_candide.py" << "--image" << "./candide-fit/temp-keyframe.png";
+    arguments << QCoreApplication::applicationDirPath() + "/candide-fit/src/fit_candide.py" << "--image" << keyframe_path;
 
     std::cout << "Fitting candide model..." << std::endl;
 
@@ -392,7 +395,17 @@ void ModelFitting::on_btn_automatic_fit_clicked()
 
     std::cout << QString(myProcess->readAllStandardOutput()).toStdString() << std::endl;
 
-    std::cout << "Done fitting candide model..." << std::endl;
+    QString OUTPUT_PATH = "./output.shape";
 
-    load_model("./output.shape");
+    QFileInfo check_file(OUTPUT_PATH);
+    // check if file exists and if yes: Is it really a file and no directory?
+    if (check_file.exists() && check_file.isFile()) {
+        std::cout << "Done fitting candide model..." << std::endl;
+        load_model("./output.shape");
+    } else {
+        QMessageBox msgBox;
+        msgBox.setText("An error ocurrer while trying to fit the candide model.");
+        msgBox.setInformativeText("Make sure you installed the required dependencies.");
+        msgBox.exec();
+    }
 }
