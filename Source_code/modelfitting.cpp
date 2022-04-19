@@ -46,9 +46,6 @@ void ModelFitting::init(void){
     ui->tabWidget->setCurrentIndex(0);
     std::cout<< "----> Seteo posicion inicial del tab en POSE. " << std::endl;
 
-    // Ubico mascara en el centro del espacio de trabajo
-    candide->camera_matrix = (cv::Mat_<double>(3, 3) << 750, 0, 1000/2, 0, 750, 563/2, 0, 0, 1);
-
     // Sombras
     QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect();
     shadow->setBlurRadius(40);
