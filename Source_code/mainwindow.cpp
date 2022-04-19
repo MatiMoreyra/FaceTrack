@@ -93,11 +93,11 @@ void MainWindow::move2trackingvideo(){
     tr_video.cap = kf_selection.cap; // TODO: pasar cap a puntero
     tr_video.kf_image = m_fitting.kf_image.clone();
     // ====> Opcion 1: Guardo el log en un archivo temporal para que no se almacene en la PC
-    QTemporaryFile file;
-    file.open();
-    tr_video.logfile.set_log_filename(file.fileName().toStdString(),TEMPORARY_LOG);
+    // QTemporaryFile file;
+    // file.open();
+    // tr_video.logfile.set_log_filename(file.fileName().toStdString(),TEMPORARY_LOG);
     // ====> Opcion 2: Para guardar el archivo en el directorio del video.
-    //tr_video.logfile.set_log_filename(kf_selection.filename, false);
+    tr_video.logfile.set_log_filename(kf_selection.filename, false);
     tr_video.logfile.set_total_frames(kf_selection.cap.get(cv::CAP_PROP_FRAME_COUNT) - kf_selection.cap.get(cv::CAP_PROP_POS_FRAMES));  
     kf_selection.cap.release();
     tr_video.procesarvideo();
