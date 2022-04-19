@@ -548,13 +548,13 @@ QCheckBox{
              <item>
               <widget class="QSlider" name="rotar_YZ">
                <property name="minimum">
-                <number>0</number>
+                <number>-3141</number>
                </property>
                <property name="maximum">
-                <number>6282</number>
+                <number>3141</number>
                </property>
                <property name="value">
-                <number>3141</number>
+                <number>0</number>
                </property>
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>

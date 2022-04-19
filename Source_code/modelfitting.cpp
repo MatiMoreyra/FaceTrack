@@ -158,9 +158,9 @@ void ModelFitting::resizeEvent(QResizeEvent *event){
 
 
 void ModelFitting::actualizar_posicion(){
-    ui->txt_rotXZ->setText("Rotar XZ: " + QString::number(candide->Rvector.at<double>(0, 0)));
+    ui->txt_rotXZ->setText("Rotar XZ: " + QString::number(candide->Rvector.at<double>(0, 1)));
     ui->txt_rotXY->setText("Rotar XY: " + QString::number(candide->Rvector.at<double>(0, 2)));
-    ui->txt_rotYZ->setText("Rotar YZ: " + QString::number(candide->Rvector.at<double>(0, 1)));
+    ui->txt_rotYZ->setText("Rotar YZ: " + QString::number(candide->Rvector.at<double>(0, 0)));
     ui->txt_trasX->setText("Trasladar X: " + QString::number(candide->Tvector.at<double>(0, 0)));
     ui->txt_trasY->setText("Trasladar Y: " + QString::number(-candide->Tvector.at<double>(0, 1)));
     ui->txt_trasZ->setText("Trasladar Z: " + QString::number(candide->Tvector.at<double>(0, 2)));
@@ -267,7 +267,7 @@ void ModelFitting::on_boton_reset_clicked(){
     ui->shape_slider->setValue(0);
     ui->rotar_XY->setValue(0);
     ui->rotar_XZ->setValue(0);
-    ui->rotar_YZ->setValue(3141);
+    ui->rotar_YZ->setValue(0);
     ui->trasladar_X->setValue(0);
     ui->trasladar_Y->setValue(0);
     ui->trasladar_Z->setValue(800);
@@ -334,14 +334,20 @@ void ModelFitting::on_load_model_clicked()
     QString fileName = QFileDialog::getOpenFileName(this, tr("Abrir Shape"), shape_dir, tr("Shape File (*.shape)"));
     if(fileName == NULL)
         return;
+
+    load_model(fileName);
+}
+
+void ModelFitting::load_model(QString fileName)
+{
     desconectar();
     std::cout << "Se cargara el archivo de Shape: " << fileName.toUtf8().constData() << std::endl;
     std::cout << candide->Rvector << " " << candide->Tvector << std::endl;
     candide->load_person(fileName.toUtf8().constData());
     std::cout << candide->Rvector.at<double>(0,0) << " " << candide->Tvector.at<double>(0,0) << std::endl;
-    ui->rotar_XZ->setValue(candide->Rvector.at<double>(0,0)*1000.0);
+    ui->rotar_XZ->setValue(candide->Rvector.at<double>(0,1)*1000.0);
     ui->rotar_XY->setValue(candide->Rvector.at<double>(0,2)*1000.0);
-    ui->rotar_YZ->setValue(candide->Rvector.at<double>(0,1)*1000.0);
+    ui->rotar_YZ->setValue(candide->Rvector.at<double>(0,0)*1000.0);
     ui->trasladar_X->setValue(candide->Tvector.at<double>(0,0)*100.0);
     ui->trasladar_Y->setValue(-candide->Tvector.at<double>(0,1)*100.0);
     ui->trasladar_Z->setValue(candide->Tvector.at<double>(0,2)*100.0);
@@ -353,7 +359,6 @@ void ModelFitting::on_load_model_clicked()
     else imagen = candide->graficar_mesh(kf_image);
     QImage imgQ = MatToQImage(imagen);
     ui->img_label->setPixmap(QPixmap::fromImage(imgQ).scaled(ui->img_label->width(),ui->img_label->width()*0.5625));
-
 }
 
 void ModelFitting::on_key_frame_ready_clicked()
