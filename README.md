@@ -233,7 +233,7 @@ In progress.
 If you only want to use the program (you do not want to compile it from source), you can use the installer located in `FaceTrack/Installers/setup.exe`. Just double click and the installer will install the program.
 This is a FaceTrack Installer only for Windows (see the video tutorial [FaceTrack_installation.mkv](Video_tutorials/FaceTrack_installation.mkv) for detailed instructions).
 
-**Disclaimer: the latest released installer does not contain support for automatic mask fitting. You have to build from sources in order to use this feature.**
+**Disclaimer: the latest released installer does not contain support for automatic mask fitting, you need to build from sources in order to use that feature.**
 
 ## Citation
 This project was initially developed by Facundo Reyes and Julián Alvarez under the supervision of PhD. Gonzalo Sad in FCEIA, Universidad Nacional de Rosario, Argentina.
