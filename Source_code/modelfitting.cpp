@@ -7,6 +7,7 @@
 #include <QFileInfo>
 #include <QFileDialog>
 #include <QGraphicsDropShadowEffect>
+#include <QProgressDialog>
 
 #include "facialmesh.h"
 
@@ -366,4 +367,35 @@ void ModelFitting::on_key_frame_ready_clicked()
     candide->set_keyframe_image(candide->get_keyframe());
     candide->set_keyframe_model();
     emit keyframe_ready();
+}
+
+
+void ModelFitting::on_btn_automatic_fit_clicked()
+{
+    std::cout << "Ajustando máscara" << std::endl;
+    // Exportar frame actual.
+    cv::Mat keyframe = candide->initial_keyframe;
+    cv::imwrite("./candide-fit/temp-keyframe.png", GetFittedImage(keyframe, 713, 1270));
+
+    QString candide_fit_path = "python3";
+    QStringList arguments;
+    arguments << "./candide-fit/src/fit_candide.py" << "--image" << "./candide-fit/temp-keyframe.png";
+
+    std::cout << "Fitting candide model..." << std::endl;
+
+    QProcess *myProcess = new QProcess();
+
+    QProgressDialog *dialog = new QProgressDialog("Ajustando modelo...", QString(), 0, 0);
+    dialog->setAttribute(Qt::WA_DeleteOnClose);
+
+    connect(myProcess, SIGNAL(finished(int)), dialog, SLOT(close()));
+
+    myProcess->start(candide_fit_path, arguments);
+    dialog->exec();
+
+    std::cout << QString(myProcess->readAllStandardOutput()).toStdString() << std::endl;
+
+    std::cout << "Done fitting candide model..." << std::endl;
+
+    load_model("./output.shape");
 }
