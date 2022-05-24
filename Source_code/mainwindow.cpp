@@ -37,7 +37,7 @@ MainWindow::MainWindow(QWidget *parent)
     shadow_label->setXOffset(0);
     shadow_label->setYOffset(0);
     shadow_label->setColor(QColor(0, 0, 0, 100));
-    ui->label->setGraphicsEffect(shadow_label);
+    // ui->label->setGraphicsEffect(shadow_label);
     QGraphicsDropShadowEffect *shadow_button = new QGraphicsDropShadowEffect();
     shadow_button->setBlurRadius(80);
     shadow_button->setXOffset(15);

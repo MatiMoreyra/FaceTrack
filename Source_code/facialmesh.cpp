@@ -170,100 +170,33 @@ void facialmesh::load_mesh(string filename)
 
                 // Busco la proxima linea que sea el comienzo de  un AUV
                 while (string::npos == line.find("# ")) std::getline(file, line);
+                unit simetrical_unit;
+                simetrical_unit.name = strdup(line.c_str());
+                while (string::npos != line.find("# ")) std::getline(file, line);
 
-                if (string::npos != line.find("# ")) {
-                    // Para los units que no deben ser asimetricos
-                    if (true) {
+                // Para los units que no deben ser asimetricos
+                int cant_de_renglones = atoi(line.c_str());
+                simetrical_unit.matriz.reserve(cant_de_renglones);
 
-                        unit simetrical_unit;
-                        line = line.substr(2); //Le quito los dos primeros elementos al nombre (# )
-                        simetrical_unit.name = strdup(line.c_str());
-                        std::getline(file, line);
-                        int cant_de_renglones = atoi(line.c_str());
-                        simetrical_unit.matriz.reserve(cant_de_renglones);
+                //std::printf("\n\n ============ AUV: %s // RENGLONES: %d ==========", simetrical_unit.name, cant_de_renglones);
 
-                        //std::printf("\n\n ============ AUV: %s // RENGLONES: %d ==========", simetrical_unit.name, cant_de_renglones);
-
-                        for (int j = 0; j < cant_de_renglones; j++)
-                        {
-                            getline(file, line);
-                            //std::printf("\n ---  %s", line.c_str());
-                            linedata_tmp.clear();
-                            split_line(line, ' ', linedata_tmp);
-                            simetrical_unit.matriz.push_back(renglon_matriz(str2float(linedata_tmp.at(0)),
-                                str2float(linedata_tmp.at(1)),
-                                -str2float(linedata_tmp.at(2)),
-                                -str2float(linedata_tmp.at(3))));
-                            vertex_class[str2float(linedata_tmp.at(0))] = CLASE_ANIMATION;
-                        }
-                        animation_parameters.push_back(simetrical_unit);
-                        animation_coef.push_back(0.0);
-                        animation_coef_k.push_back(0.0);
-
-                        simetrical_unit.matriz.clear();
-
-
-                    }
-                    // Para los units que deben ser asimetricos
-                    else {
-                        string auv_name = line;
-                        auv_name = auv_name.substr(2);
-                        getline(file, line);
-                        int cant_de_renglones = atoi(line.c_str());
-                        unit izquierda, derecha;
-                        string aux = auv_name + " R";
-                        izquierda.name = strdup(aux.c_str());
-                        aux = auv_name + " L";
-                        derecha.name = strdup(aux.c_str());
-                        aux.clear();
-
-                        izquierda.matriz.reserve(cant_de_renglones);
-                        derecha.matriz.reserve(cant_de_renglones);
-
-                        //std::printf("\n\n ============ AUV: %s // RENGLONES: %d ==========", auv_name.c_str(), cant_de_renglones);
-
-                        for (int j = 0; j < cant_de_renglones; j++) {
-                            getline(file, line);
-                            //std::printf("\n ---  %s", line.c_str());
-                            linedata_tmp.clear();
-                            split_line(line, ' ', linedata_tmp);
-                            vertex_class[str2float(linedata_tmp.at(0))] = CLASE_ANIMATION;
-
-                            if (vertices3D->at(str2float(linedata_tmp.at(0))).x >= 0) {
-                                izquierda.matriz.push_back(renglon_matriz(str2float(linedata_tmp.at(0)),
-                                    str2float(linedata_tmp.at(1)),
-                                    -str2float(linedata_tmp.at(2)),
-                                    -str2float(linedata_tmp.at(3))));
-                            }
-                            if (vertices3D->at(str2float(linedata_tmp.at(0))).x <= 0) {
-                                derecha.matriz.push_back(renglon_matriz(str2float(linedata_tmp.at(0)),
-                                    str2float(linedata_tmp.at(1)),
-                                    -str2float(linedata_tmp.at(2)),
-                                    -str2float(linedata_tmp.at(3))));
-                            }
-                            if (vertices3D->at(str2float(linedata_tmp.at(0))).x == 0) {
-                                //std::printf(" ---> Punto Central, %f", str2float(linedata_tmp.at(1)));
-                                vertex_class[str2float(linedata_tmp.at(0))] = CLASE_ANIMATION_CENTRAL;
-                            }
-                        }
-
-                        //std::printf("\n------- Izquierda: %s // Cantidad de elementos: %d ", izquierda.name, int(izquierda.matriz.size()));
-                        //std::printf("\n------- Derecha: %s // Cantidad de elementos: %d ", derecha.name, int(derecha.matriz.size()));
-
-                        // Guardo mis Animation Units L y R generadas
-                        animation_parameters.push_back(izquierda);
-                        animation_parameters.push_back(derecha);
-                        izquierda.matriz.clear();
-                        derecha.matriz.clear();
-
-                        // Inicializo todos los parametros de activacion de las units en 0
-                        animation_coef.push_back(0.0);
-                        animation_coef.push_back(0.0);
-                        animation_coef_k.push_back(0.0);
-                        animation_coef_k.push_back(0.0);
-                    }
-
+                for (int j = 0; j < cant_de_renglones; j++)
+                {
+                    getline(file, line);
+                    //std::printf("\n ---  %s", line.c_str());
+                    linedata_tmp.clear();
+                    split_line(line, ' ', linedata_tmp);
+                    simetrical_unit.matriz.push_back(renglon_matriz(str2float(linedata_tmp.at(0)),
+                        str2float(linedata_tmp.at(1)),
+                        -str2float(linedata_tmp.at(2)),
+                        -str2float(linedata_tmp.at(3))));
+                    vertex_class[str2float(linedata_tmp.at(0))] = CLASE_ANIMATION;
                 }
+                animation_parameters.push_back(simetrical_unit);
+                animation_coef.push_back(0.0);
+                animation_coef_k.push_back(0.0);
+
+                simetrical_unit.matriz.clear();
             }
             std::cout << "----> Animation Units Cargadas" << std::endl;
         }

@@ -392,7 +392,7 @@ void facetracking::estimar_animacion(cv::Mat prev_img, cv::Mat img, puntos2d pun
 
     puntos_animation_tracking.reserve(int(candide->vertices2D->size()));
     puntos_animation_tracking_indx.reserve(int(candide->vertices2D->size()));
-    std::vector<int> facemark_indx_candide =   { 62 ,0,0,0,63,0,0,65,10,32,0,0,30,28,0,0,29,48,0,0,0,50,17,0,0,0,15,0,94,0,0,0,112,0,111,0,53,69,73,23,74,70,23,71,67,20,68,72,64,80,66,7,33,79,31,85,0,8,0,86,89,82,87,83,88,81,40,84 };
+    std::vector<int> facemark_indx_candide =   { 62 ,0,0,0,63,0,0,65,10,32,0,0,30,28,0,0,29,48,0,0,0,50,17,0,0,0,15,0,94,0,0,0,112,0,111,0,53,69,73,23,74,70,23,71,67,20,68,72,64,80,66,7,33,79,31,85,0,8,0,86,89,82,87,81,88,83,40,84 };
     // Selecciona los puntos para la estimacion de la animacion
     for(int n=0; n< int(candide->vertices2D->size()); n++)
     {
@@ -520,15 +520,19 @@ void facetracking::estimar_animacion(cv::Mat prev_img, cv::Mat img, puntos2d pun
 void facetracking::ajustar_animacion_levmar(puntos2d *puntos2D_target, std::vector<int>* point_indxs,
                                 facialmesh *modelo)
 {
-    alglib::real_1d_array x;
+    alglib::real_1d_array x, bndl, bndu;
     datos_estimacion_anim datos_anim = datos_estimacion_anim();
     datos_anim.modelo = modelo;
     datos_anim.puntos2D_target = puntos2D_target;
     datos_anim.point_indxs = point_indxs;
 
     x.setlength(datos_anim.modelo->animation_parameters.size());
+    bndl.setlength(datos_anim.modelo->animation_parameters.size());
+    bndu.setlength(datos_anim.modelo->animation_parameters.size());
     for (int k=0; k < int(datos_anim.modelo->animation_parameters.size()); k++){
           x[k] = datos_anim.modelo->animation_coef.at(k);
+          bndl[k] = -1.0;
+          bndu[k] = 1.0;
     }
 
     double epsx = 1E-10;
@@ -538,8 +542,8 @@ void facetracking::ajustar_animacion_levmar(puntos2d *puntos2D_target, std::vect
 
     // Limites de los coeficientes para cada AUV adaptado a candide3_v3
     //                              0      1     2     3     4     5     6     7     8     9     10    11    12    13     14    15    16    17   18   19   20   21   22   23   24
-    alglib::real_1d_array bndl = "[ 0.0,  0.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0,  0.0,  -0.8,  -0.8, -1.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ]";
-    alglib::real_1d_array bndu = "[ 1.0,  1.0,  2.0,  2.0,  2.0,  2.0,  2.0,  2.0,  2.0,  2.0,  2.0,  2.0,  2.0,   1.5,   1.5,  2.0,  2.0, 1.5, 1.5, 1.5, 1.5, 0.0, 0.0, 2.0, 2.0 ]";
+    // alglib::real_1d_array bndl = "[ -1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0,-1.0 ]";
+    // alglib::real_1d_array bndu = "[ 1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0 ]";
 
     alglib::minlmcreatev(datos_anim.modelo->animation_parameters.size(), point_indxs->size(), x, 1E-3, state);
     alglib::minlmsetbc(state, bndl, bndu);
