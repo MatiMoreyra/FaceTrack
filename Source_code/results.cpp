@@ -321,10 +321,10 @@ void Results::graficar_distancias(string medida)
         {
            distRef=sqrt(((trackingdata.trackingdata.at(k).vertices.at(23).x-trackingdata.trackingdata.at(k).vertices.at(56).x)*(trackingdata.trackingdata.at(k).vertices.at(23).x-trackingdata.trackingdata.at(k).vertices.at(56).x))+((trackingdata.trackingdata.at(k).vertices.at(23).y-trackingdata.trackingdata.at(k).vertices.at(56).y)*(trackingdata.trackingdata.at(k).vertices.at(23).y-trackingdata.trackingdata.at(k).vertices.at(56).y)));
 
-           x1=trackingdata.trackingdata.at(k).vertices.at(53).x;
-           x2=trackingdata.trackingdata.at(k).vertices.at(64).x;
-           y1=trackingdata.trackingdata.at(k).vertices.at(53).y;
-           y2=trackingdata.trackingdata.at(k).vertices.at(64).y;
+           x1=trackingdata.trackingdata.at(k).vertices.at(20).x;
+           x2=trackingdata.trackingdata.at(k).vertices.at(31).x;
+           y1=trackingdata.trackingdata.at(k).vertices.at(20).y;
+           y2=trackingdata.trackingdata.at(k).vertices.at(31).y;
 
            dist=sqrt(((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2)))/distRef; //Divido la distancia por la distancia entre los ojos para normalizar
            distOjoBocaL->append(trackingdata.trackingdata.at(k).frame_number,dist);
@@ -351,10 +351,10 @@ void Results::graficar_distancias(string medida)
         {
            distRef=sqrt(((trackingdata.trackingdata.at(k).vertices.at(23).x-trackingdata.trackingdata.at(k).vertices.at(56).x)*(trackingdata.trackingdata.at(k).vertices.at(23).x-trackingdata.trackingdata.at(k).vertices.at(56).x))+((trackingdata.trackingdata.at(k).vertices.at(23).y-trackingdata.trackingdata.at(k).vertices.at(56).y)*(trackingdata.trackingdata.at(k).vertices.at(23).y-trackingdata.trackingdata.at(k).vertices.at(56).y)));
 
-           x1=trackingdata.trackingdata.at(k).vertices.at(20).x;
-           x2=trackingdata.trackingdata.at(k).vertices.at(31).x;
-           y1=trackingdata.trackingdata.at(k).vertices.at(20).y;
-           y2=trackingdata.trackingdata.at(k).vertices.at(31).y;
+           x1=trackingdata.trackingdata.at(k).vertices.at(53).x;
+           x2=trackingdata.trackingdata.at(k).vertices.at(64).x;
+           y1=trackingdata.trackingdata.at(k).vertices.at(53).y;
+           y2=trackingdata.trackingdata.at(k).vertices.at(64).y;
 
            dist=sqrt(((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2)))/distRef; //Divido la distancia por la distancia entre los ojos para normalizar
            distOjoBocaR->append(trackingdata.trackingdata.at(k).frame_number,dist);
@@ -388,10 +388,10 @@ void Results::graficar_distancias(string medida)
         {
            distRef=sqrt(((trackingdata.trackingdata.at(k).vertices.at(23).x-trackingdata.trackingdata.at(k).vertices.at(56).x)*(trackingdata.trackingdata.at(k).vertices.at(23).x-trackingdata.trackingdata.at(k).vertices.at(56).x))+((trackingdata.trackingdata.at(k).vertices.at(23).y-trackingdata.trackingdata.at(k).vertices.at(56).y)*(trackingdata.trackingdata.at(k).vertices.at(23).y-trackingdata.trackingdata.at(k).vertices.at(56).y)));
 
-           x1=trackingdata.trackingdata.at(k).vertices.at(54).x;
-           x2=trackingdata.trackingdata.at(k).vertices.at(55).x;
-           y1=trackingdata.trackingdata.at(k).vertices.at(54).y;
-           y2=trackingdata.trackingdata.at(k).vertices.at(55).y;
+           x1=trackingdata.trackingdata.at(k).vertices.at(21).x;
+           x2=trackingdata.trackingdata.at(k).vertices.at(22).x;
+           y1=trackingdata.trackingdata.at(k).vertices.at(21).y;
+           y2=trackingdata.trackingdata.at(k).vertices.at(22).y;
 
            dist=sqrt(((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2)))/distRef; //Divido la distancia por la distancia entre los ojos para normalizar
            distOjoSupInfL->append(trackingdata.trackingdata.at(k).frame_number,dist);
@@ -417,10 +417,10 @@ void Results::graficar_distancias(string medida)
         {
            distRef=sqrt(((trackingdata.trackingdata.at(k).vertices.at(23).x-trackingdata.trackingdata.at(k).vertices.at(56).x)*(trackingdata.trackingdata.at(k).vertices.at(23).x-trackingdata.trackingdata.at(k).vertices.at(56).x))+((trackingdata.trackingdata.at(k).vertices.at(23).y-trackingdata.trackingdata.at(k).vertices.at(56).y)*(trackingdata.trackingdata.at(k).vertices.at(23).y-trackingdata.trackingdata.at(k).vertices.at(56).y)));
 
-           x1=trackingdata.trackingdata.at(k).vertices.at(21).x;
-           x2=trackingdata.trackingdata.at(k).vertices.at(22).x;
-           y1=trackingdata.trackingdata.at(k).vertices.at(21).y;
-           y2=trackingdata.trackingdata.at(k).vertices.at(22).y;
+           x1=trackingdata.trackingdata.at(k).vertices.at(54).x;
+           x2=trackingdata.trackingdata.at(k).vertices.at(55).x;
+           y1=trackingdata.trackingdata.at(k).vertices.at(54).y;
+           y2=trackingdata.trackingdata.at(k).vertices.at(55).y;
 
            dist=sqrt(((x1-x2)*(x1-x2))+((y1-y2)*(y1-y2)))/distRef; //Divido la distancia por la distancia entre los ojos para normalizar
            distOjoSupInfR->append(trackingdata.trackingdata.at(k).frame_number,dist);
@@ -495,7 +495,7 @@ void Results::grafica_dinamica_gestos()
         gestos.at(0)->setPen(linea);
         for(int k=0;k<int(trackingdata.trackingdata.size());k++)
         {
-            float valor = trackingdata.trackingdata.at(k).animation_coef.at(14)+trackingdata.trackingdata.at(k).animation_coef.at(16);
+            float valor = trackingdata.trackingdata.at(k).animation_coef.at(39)+trackingdata.trackingdata.at(k).animation_coef.at(41)+trackingdata.trackingdata.at(k).animation_coef.at(43);
 
             if( valor >= umbral_elevar_ceja_L){
                 gestos.at(0)->append(trackingdata.trackingdata.at(k).frame_number,valor);
@@ -517,7 +517,7 @@ void Results::grafica_dinamica_gestos()
         gestos.at(1)->setPen(linea);
         for(int k=0;k<int(trackingdata.trackingdata.size());k++)
         {
-            float valor = trackingdata.trackingdata.at(k).animation_coef.at(13)+trackingdata.trackingdata.at(k).animation_coef.at(15);
+            float valor = trackingdata.trackingdata.at(k).animation_coef.at(40)+trackingdata.trackingdata.at(k).animation_coef.at(42)+trackingdata.trackingdata.at(k).animation_coef.at(44);
             if( valor >= umbral_elevar_ceja_R){
                 gestos.at(1)->append(trackingdata.trackingdata.at(k).frame_number,valor);
             }
@@ -538,7 +538,7 @@ void Results::grafica_dinamica_gestos()
         gestos.at(2)->setPen(linea);
         for(int k=0;k<int(trackingdata.trackingdata.size());k++)
         {      
-            float valor = -trackingdata.trackingdata.at(k).animation_coef.at(14) - trackingdata.trackingdata.at(k).animation_coef.at(16) + trackingdata.trackingdata.at(k).animation_coef.at(18);
+            float valor = -(trackingdata.trackingdata.at(k).animation_coef.at(39)+trackingdata.trackingdata.at(k).animation_coef.at(41)+trackingdata.trackingdata.at(k).animation_coef.at(43));
             if( valor >= umbral_fruncir_ceno_L){
                 gestos.at(2)->append(trackingdata.trackingdata.at(k).frame_number,valor);
             }
@@ -559,7 +559,7 @@ void Results::grafica_dinamica_gestos()
         gestos.at(3)->setPen(linea);
         for(int k=0;k<int(trackingdata.trackingdata.size());k++)
         {
-            float valor = -trackingdata.trackingdata.at(k).animation_coef.at(13) - trackingdata.trackingdata.at(k).animation_coef.at(15) + trackingdata.trackingdata.at(k).animation_coef.at(17);
+            float valor = -(trackingdata.trackingdata.at(k).animation_coef.at(40)+trackingdata.trackingdata.at(k).animation_coef.at(42)+trackingdata.trackingdata.at(k).animation_coef.at(44));
 
             if( valor >= umbral_fruncir_ceno_R){
                 gestos.at(3)->append(trackingdata.trackingdata.at(k).frame_number,valor);
@@ -576,22 +576,24 @@ void Results::grafica_dinamica_gestos()
     if(ui->scroll_umbral_sonreir_L->value()/20.0 != umbral_sonreir_L){
         umbral_sonreir_L = ui->scroll_umbral_sonreir_L->value()/20.0;
         ui->scroll_umbral_sonreir_L->setToolTip(QString::number(umbral_sonreir_L));
-        linea.setColor(QColor(250, 100, 0, 250));
+        linea.setColor(QColor(0, 0, 0, 250));
         gestos.at(4)->clear();
         gestos.at(4)->setPen(linea);
         for(int k=0;k<int(trackingdata.trackingdata.size());k++)
         {
-            float valor = (trackingdata.trackingdata.at(k).animation_coef.at(3) +
-                           trackingdata.trackingdata.at(k).animation_coef.at(5) -
-                           trackingdata.trackingdata.at(k).animation_coef.at(7)) /3;
-            if( valor >= umbral_sonreir_L){
+            float valor = (trackingdata.trackingdata.at(k).animation_coef.at(2) -
+                           trackingdata.trackingdata.at(k).animation_coef.at(4)) / 2 +
+                           (trackingdata.trackingdata.at(k).animation_coef.at(14) +
+                           trackingdata.trackingdata.at(k).animation_coef.at(53)) / 2;
+
+            if(valor > umbral_sonreir_L){
                 gestos.at(4)->append(trackingdata.trackingdata.at(k).frame_number,valor);
             }
             else{
                 gestos.at(4)->append(trackingdata.trackingdata.at(k).frame_number,0.0);
             }
-            if(valor >maxGestos.at(4)){
-                maxGestos.at(4)= valor;
+            if(valor > maxGestos.at(4)){
+                maxGestos.at(4) = valor;
             }
         }
     }
@@ -604,9 +606,10 @@ void Results::grafica_dinamica_gestos()
         gestos.at(5)->setPen(linea);
         for(int k=0;k<int(trackingdata.trackingdata.size());k++)
         {
-            float valor = (trackingdata.trackingdata.at(k).animation_coef.at(2) +
-                           trackingdata.trackingdata.at(k).animation_coef.at(4) -
-                           trackingdata.trackingdata.at(k).animation_coef.at(6)) /3;
+            float valor = (trackingdata.trackingdata.at(k).animation_coef.at(2) -
+                           trackingdata.trackingdata.at(k).animation_coef.at(4)) / 2 +
+                           (trackingdata.trackingdata.at(k).animation_coef.at(15) +
+                           trackingdata.trackingdata.at(k).animation_coef.at(54)) / 2;
 
             if(valor > umbral_sonreir_R){
                 gestos.at(5)->append(trackingdata.trackingdata.at(k).frame_number,valor);
@@ -623,20 +626,22 @@ void Results::grafica_dinamica_gestos()
     if(ui->scroll_umbral_beso_L->value()/20.0 != umbral_beso_L){
         umbral_beso_L = ui->scroll_umbral_beso_L->value()/20.0;
         ui->scroll_umbral_beso_L->setToolTip(QString::number(umbral_beso_L));
-        linea.setColor(QColor(220,0,0,250));
-        gestos.at(6)->clear();
-        gestos.at(6)->setPen(linea);
+        linea.setColor(QColor(0, 0, 150, 250));
+        gestos.at(7)->clear();
+        gestos.at(7)->setPen(linea);
         for(int k=0;k<int(trackingdata.trackingdata.size());k++)
         {
-            float valor = -trackingdata.trackingdata.at(k).animation_coef.at(5);
+            float valor = -((trackingdata.trackingdata.at(k).animation_coef.at(2) / 2) +
+                           (trackingdata.trackingdata.at(k).animation_coef.at(14) +
+                           trackingdata.trackingdata.at(k).animation_coef.at(53)) / 2);
             if(valor > umbral_beso_L){
-                gestos.at(6)->append(trackingdata.trackingdata.at(k).frame_number,valor);
+                gestos.at(7)->append(trackingdata.trackingdata.at(k).frame_number,valor);
             }
             else{
-                gestos.at(6)->append(trackingdata.trackingdata.at(k).frame_number,0.0);
+                gestos.at(7)->append(trackingdata.trackingdata.at(k).frame_number,0.0);
             }
-            if(valor > maxGestos.at(6)){
-                maxGestos.at(6) = valor;
+            if(valor > maxGestos.at(7)){
+                maxGestos.at(7) = valor;
             }
         }
     }
@@ -649,7 +654,9 @@ void Results::grafica_dinamica_gestos()
         gestos.at(7)->setPen(linea);
         for(int k=0;k<int(trackingdata.trackingdata.size());k++)
         {
-            float valor = -trackingdata.trackingdata.at(k).animation_coef.at(4);
+            float valor = -((trackingdata.trackingdata.at(k).animation_coef.at(2) / 2) +
+                           (trackingdata.trackingdata.at(k).animation_coef.at(15) +
+                           trackingdata.trackingdata.at(k).animation_coef.at(54)) / 2);
             if(valor > umbral_beso_R){
                 gestos.at(7)->append(trackingdata.trackingdata.at(k).frame_number,valor);
             }
@@ -670,7 +677,7 @@ void Results::grafica_dinamica_gestos()
         gestos.at(8)->setPen(linea);
         for(int k=0;k<int(trackingdata.trackingdata.size());k++)
         {
-            float valor = trackingdata.trackingdata.at(k).animation_coef.at(20);
+            float valor = trackingdata.trackingdata.at(k).animation_coef.at(27) + trackingdata.trackingdata.at(k).animation_coef.at(29);
             if(valor > umbral_cerrar_ojo_L){
                 gestos.at(8)->append(trackingdata.trackingdata.at(k).frame_number,valor);
             }
@@ -691,7 +698,7 @@ void Results::grafica_dinamica_gestos()
         gestos.at(9)->setPen(linea);
         for(int k=0;k<int(trackingdata.trackingdata.size());k++)
         {
-            float valor = trackingdata.trackingdata.at(k).animation_coef.at(19);
+            float valor = trackingdata.trackingdata.at(k).animation_coef.at(28) + trackingdata.trackingdata.at(k).animation_coef.at(30);
             if(valor > umbral_cerrar_ojo_R){
                 gestos.at(9)->append(trackingdata.trackingdata.at(k).frame_number,valor);
             }
@@ -712,10 +719,10 @@ void Results::grafica_dinamica_gestos()
          gestos.at(10)->setPen(linea);
          for(int k=0;k<int(trackingdata.trackingdata.size());k++)
          {
-             float valor = trackingdata.trackingdata.at(k).animation_coef.at(20) * 0.6 +
-                     (-trackingdata.trackingdata.at(k).animation_coef.at(14) -
-                       trackingdata.trackingdata.at(k).animation_coef.at(16) +
-                       trackingdata.trackingdata.at(k).animation_coef.at(18)) * 0.4 ;
+             float valor = trackingdata.trackingdata.at(k).animation_coef.at(27) + trackingdata.trackingdata.at(k).animation_coef.at(29) *  1.0 -
+                     (trackingdata.trackingdata.at(k).animation_coef.at(39) +
+                      trackingdata.trackingdata.at(k).animation_coef.at(41) +
+                      trackingdata.trackingdata.at(k).animation_coef.at(43)) * 0.4 ;
              if(valor > umbral_cerrar_ojo_fuerte_L){
                  gestos.at(10)->append(trackingdata.trackingdata.at(k).frame_number,valor);
              }
@@ -736,10 +743,10 @@ void Results::grafica_dinamica_gestos()
         gestos.at(11)->setPen(linea);
         for(int k=0;k<int(trackingdata.trackingdata.size());k++)
         {
-            float valor = trackingdata.trackingdata.at(k).animation_coef.at(19) * 0.6 +
-                          (-trackingdata.trackingdata.at(k).animation_coef.at(13) -
-                            trackingdata.trackingdata.at(k).animation_coef.at(15) +
-                            trackingdata.trackingdata.at(k).animation_coef.at(17)) * 0.4 ;
+             float valor = trackingdata.trackingdata.at(k).animation_coef.at(28) + trackingdata.trackingdata.at(k).animation_coef.at(30) *  1.0 -
+                     (trackingdata.trackingdata.at(k).animation_coef.at(40) +
+                      trackingdata.trackingdata.at(k).animation_coef.at(42) +
+                      trackingdata.trackingdata.at(k).animation_coef.at(44)) * 0.4 ;
             if(valor > umbral_cerrar_ojo_fuerte_R){
                 gestos.at(11)->append(trackingdata.trackingdata.at(k).frame_number,valor);
             }
@@ -1279,7 +1286,7 @@ void Results::on_PDF_clicked()
     //  ===============> Foto paciente
     cv::Mat foto;
     cv::CascadeClassifier HC_face;
-    HC_face.load("haarcascade_frontalface_alt2.xml");
+    HC_face.load((QCoreApplication::applicationDirPath() + "/data/haarcascade_frontalface_alt2.xml").toStdString());
     cv::Mat gray, small_img;
         int maxArea = 0;
         int indx = 0;

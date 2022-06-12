@@ -171,7 +171,7 @@ void facialmesh::load_mesh(string filename)
                 // Busco la proxima linea que sea el comienzo de  un AUV
                 while (string::npos == line.find("# ")) std::getline(file, line);
                 unit simetrical_unit;
-                simetrical_unit.name = strdup(line.c_str());
+                simetrical_unit.name = strdup((std::to_string(k) + " - "  + line).c_str());
                 while (string::npos != line.find("# ")) std::getline(file, line);
 
                 // Para los units que no deben ser asimetricos
